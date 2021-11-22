@@ -1,0 +1,17 @@
+.header {
+    background-color: #eeeeee;
+    color: #222222;
+}
+
+.navigation {
+    background-color: #999999;
+}
+
+.content {
+    background-color: #dddddd;
+}
+
+.footer {
+    background-color: #eeeeff;
+    color: #333333;
+}
