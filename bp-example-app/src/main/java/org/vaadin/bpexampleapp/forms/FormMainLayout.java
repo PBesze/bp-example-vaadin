@@ -36,7 +36,7 @@ public class FormMainLayout extends VerticalLayout {
 						
 				final Div header = new Div();
 				header.getStyle().set("flexShrink", "0");
-				header.setText("This is the header. My height is 50 pixels");
+				header.setText("If you can't see the FORM after 'Delivery' button refresh browser /del");
 				header.setClassName("header");
 				header.setHeight("50px");
 
@@ -97,7 +97,6 @@ public class FormMainLayout extends VerticalLayout {
 			    	//content.add(FormContentHome.FormContent());	
 				     
 			    	homeButton.getUI().ifPresent(ui ->  ui.navigate("fh"));
-
 			    	});
 				}
 			
@@ -106,7 +105,8 @@ public class FormMainLayout extends VerticalLayout {
 			    deleteButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 			    deleteButton.addClickListener(e ->
 			    	{
-			    	content.removeAll();			
+			    	content.removeAll();	
+			    	content.setText("Deleted");
 
 			    	});
 				}
@@ -117,7 +117,8 @@ public class FormMainLayout extends VerticalLayout {
 			    deliveryInButton.addClickListener(e ->
 			    	{	     
 			    	deliveryInButton.getUI().ifPresent(ui ->  ui.navigate("del"));
-			    	 UI.getCurrent().getPage().reload();
+			    	 //UI.getCurrent().getPage().reload();
+			    	// TODO avoid full page refresh -currently it does not work well in most cases and manual refreh needed
 			    	});
 				}
 			
