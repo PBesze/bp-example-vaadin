@@ -117,7 +117,7 @@ public class FormMainLayout extends VerticalLayout {
 			    deliveryInButton.addClickListener(e ->
 			    	{	     
 			    	deliveryInButton.getUI().ifPresent(ui ->  ui.navigate("del"));
-			    	 //UI.getCurrent().getPage().reload();
+			    	 //UI.getCurrent().getPage().reload();  - if it isn't commented out it works well, but refresh the page
 			    	// TODO avoid full page refresh -currently it does not work well in most cases and manual refreh needed
 			    	});
 				}
