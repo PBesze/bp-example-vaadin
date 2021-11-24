@@ -36,7 +36,8 @@ public class FormMainLayout extends VerticalLayout {
 						
 				final Div header = new Div();
 				header.getStyle().set("flexShrink", "0");
-				header.setText("If you can't see the FORM after 'Delivery' button refresh browser /del");
+				header.setText(""If you can't see the FORM after 'Delivery' button, then refresh browser on /del. 
+					       - Saved 'Delivery' CAN be seen in /lists 'Inventory' "");
 				header.setClassName("header");
 				header.setHeight("50px");
 
