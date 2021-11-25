@@ -15,10 +15,9 @@ import org.vaadin.bpexampleapp.model.Product;
 import org.vaadin.bpexampleapp.model.ProductRepository;
 
 
-@Route(value="del", layout = MainLayout.class)
 @SpringComponent
 @UIScope
-public class FormDelivery extends FormMainLayout {
+public class FormDelivery extends VerticalLayout {
 	private static final long serialVersionUID = -7L;
 	public static final String TITLE = "Delivery OUT";
 	public static final String ROUTE = "out";
@@ -37,7 +36,7 @@ public class FormDelivery extends FormMainLayout {
 	@Autowired
 	public FormDelivery(ProductRepository repository) {
 		this.repository = repository;
-		content.add(name, amount, save);
+		add(name, amount, save);
 		save.addClickListener(e -> save());
 		binder.bindInstanceFields(this);
 	}
@@ -50,8 +49,5 @@ public class FormDelivery extends FormMainLayout {
 
 
 	}
-
-	
-	
 
 
