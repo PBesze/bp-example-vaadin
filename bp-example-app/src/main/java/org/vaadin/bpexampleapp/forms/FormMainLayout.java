@@ -11,6 +11,7 @@ import com.vaadin.flow.router.RouterLink;
 
 import org.vaadin.bpexampleapp.MainLayout;
 import org.vaadin.bpexampleapp.forms.*;
+import org.vaadin.bpexampleapp.model.ProductRepository;
  
 @Route(value="forms", layout = MainLayout.class)
 
@@ -27,8 +28,10 @@ public class FormMainLayout extends VerticalLayout {
 			Button homeButton;
 			Button deliveryInButton;
 			Button deleteButton;
+			private final ProductRepository productRepository;
 			
-			public FormMainLayout() {
+			public FormMainLayout(ProductRepository productRepository) {
+				this.productRepository = productRepository;
 				setPadding(false);
 				setSpacing(false);
 				setSizeFull();
@@ -36,8 +39,7 @@ public class FormMainLayout extends VerticalLayout {
 						
 				final Div header = new Div();
 				header.getStyle().set("flexShrink", "0");
-				header.setText(""If you can't see the FORM after 'Delivery' button, then refresh browser on /del. 
-					       - Saved 'Delivery' CAN be seen in /lists 'Inventory' "");
+				header.setText("Saved 'Delivery' CAN be seen in /lists 'Inventory' ");
 				header.setClassName("header");
 				header.setHeight("50px");
 
@@ -95,9 +97,8 @@ public class FormMainLayout extends VerticalLayout {
 			    homeButton.addClickListener(e ->
 			    	{
 			    	content.removeAll();
-			    	//content.add(FormContentHome.FormContent());	
-				     
-			    	homeButton.getUI().ifPresent(ui ->  ui.navigate("fh"));
+			    	content.add(new FormContentHome(productRepository));	
+
 			    	});
 				}
 			
@@ -116,9 +117,11 @@ public class FormMainLayout extends VerticalLayout {
 			    deliveryInButton = new Button("Delivery");
 			    deliveryInButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 			    deliveryInButton.addClickListener(e ->
-			    	{	     
-			    	deliveryInButton.getUI().ifPresent(ui ->  ui.navigate("del"));
-			    	 //UI.getCurrent().getPage().reload();  - if it isn't commented out it works well, but refresh the page
+			    	{	
+			    		content.removeAll();
+			    		content.add(new FormDelivery(productRepository));
+			    	//deliveryInButton.getUI().ifPresent(ui ->  ui.navigate("del"));
+			    	 //UI.getCurrent().getPage().reload();
 			    	// TODO avoid full page refresh -currently it does not work well in most cases and manual refreh needed
 			    	});
 				}
